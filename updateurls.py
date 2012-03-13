@@ -6,7 +6,7 @@ import fileinput
 
 def was_moved(m, line_no):
     url = m.group(0) 
-    response = requests.head(url)
+    response = requests.head(url, allow_redirects=True)
     if response.status_code != 200:
         sys.stderr.write("ERROR - Line %d: %s reponse invalid. Status was %d\n" % (line_no, url,
                 response.status_code))
